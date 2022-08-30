@@ -1,0 +1,19 @@
+version: "3.8"
+services:
+    latex_env:
+        build:
+            context: .
+            dockerfile: Dockerfile
+            # args:
+            #     - PASSWD=${PASSWD}
+
+        volumes:
+            - type: bind
+              source: ./data
+              target: /root/class_documents/
+
+        # ports:
+        #     - '2222:22'
+        restart: always
+        environment:
+            SHELL: "/bin/bash"

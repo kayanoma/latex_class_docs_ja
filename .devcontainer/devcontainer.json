@@ -1,0 +1,51 @@
+{
+    "dockerComposeFile": ["../docker-compose.yml", "docker-compose.yml"],
+    "service": "latex_env",
+    "extensions": [
+        "james-yu.latex-workshop"
+    ],
+    "settings": {
+        "terminal.integrated.shell": "/bin/bash",
+        "latex-workshop.latex.autoBuild.interval": 0,
+        "latex-workshop.latex.autoBuild.run": "onFileChange",
+        "latex-workshop.latex.autoClean.run": "onBuilt",
+        "latex-workshop.latex.clean.enabled": true,
+        "latex-workshop.latex.clean.fileTypes": [
+            "*.aux", "*.bbl", "*.bcf", "*.blg", "*.idx", "*.ind", "*.lof", "*.lot", "*.out", "*.toc", "*.acn", "*.acr", "*.alg", "*.glg", "*.glo", "*.gls", "*.ist", "*.fls", "*.log", "*.fdb_latexmk", "*.synctex.gz",
+            "_minted*", "*.nav", "*.snm", "*.vrb", "*.dvi", "*.xml", "*.synctex.gz", "*.xml"
+        ],
+        "latex-workshop.latex.recipes": [
+          {
+            "name": "latexmk 🔃",
+            "tools": ["latexmk"]
+          }
+        ],
+        "latex-workshop.latex.tools": [
+          {
+            "name": "latexmk",
+            "command": "latexmk",
+            "args": [
+             "-e",
+             "$latex=q/platex %O -synctex=1 -interaction=nonstopmode -file-line-error %S/",
+             "-e",
+             "$bibtex=q/upbibtex %O %B/",
+             "-e",
+             "$biber=q/biber %O --bblencoding=utf8 -u -U --output_safechars %B/",
+             "-e",
+             "$makeindex=q/upmendex %O -o %D %S/",
+             "-e",
+             "$dvipdf=q/dvipdfmx %O -o %D %S/",
+             "-norc",
+             "-gg",
+             "-pdfdvi",
+             "%DOC%"
+            ]
+          }
+        ],
+        "latex-workshop.latexindent.path": "/usr/local/texlive/2020/bin/x86_64-linux/latexindent",
+        "latex-workshop.message.update.show": false,
+        "latex-workshop.synctex.afterBuild.enabled": true,
+        "latex-workshop.view.pdf.viewer": "tab"
+      },
+    "workspaceFolder": "/root/class_documents"
+}
